@@ -1,15 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <nav class="navbar  navbar-expand-lg navbar-light bg-dark">
     <div class="container-fluid">
       <img src="../../assets/logo.png" alt="logo vue" width="50" height="50" />
       <button
-        class="navbar-toggler"
+        class="navbar-toggler bg-light"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,41 +27,32 @@
           >
             Create User
           </router-link>
-          <div v-if="isLoggin">
+          <template v-if="isLoggin">
             <span class="text-white">
               {{ user.name }}
             </span>
-          </div>
-          <div v-else>
-            <router-link class="nav-link text-white" :to="{ name: 'Login' }">
+          </template>
+          <template v-else>
+            <router-link
+              class="nav-link text-decoration-none text-white"
+              :to="{ name: 'Login' }"
+            >
               Login
             </router-link>
-          </div>
+          </template>
         </div>
       </div>
     </div>
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue-demi'
-
-export default defineComponent({
-  setup() {
-    const isLoggin = ref(false)
-    const user = ref({
-      name: 'Tomas Pandullo',
-    })
-    if (user.value.name) {
-      isLoggin.value = true
-    }
-
-    return {
-      isLoggin,
-      user,
-    }
-  },
+<script setup lang="ts">
+import { ref } from 'vue'
+const isLoggin = ref(false)
+const user = ref({
+  name: 'Tomas Pandullo',
 })
+if (user.value.name) {
+  isLoggin.value = true
+}
 </script>
-
-<style scoped></style>
