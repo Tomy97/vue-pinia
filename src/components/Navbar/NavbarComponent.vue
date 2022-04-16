@@ -17,24 +17,24 @@
         <div class="navbar-nav">
           <router-link
             :to="{ name: 'Home' }"
-            class="navbar-link text-decoration-none text-white"
+            class="navbar-link m-lg-2 text-decoration-none text-white"
           >
             Home
           </router-link>
           <router-link
             :to="{ name: 'CreateUser' }"
-            class="navbar-link text-decoration-none text-white"
+            class="navbar-link m-lg-2 text-decoration-none text-white"
           >
             Create User
           </router-link>
           <template v-if="isLoggin">
-            <span class="text-white">
+            <span class="m-lg-2 text-white">
               {{ user.name }}
             </span>
           </template>
           <template v-else>
             <router-link
-              class="nav-link text-decoration-none text-white"
+              class="nav-link m-lg-2 text-decoration-none text-white"
               :to="{ name: 'Login' }"
             >
               Login
