@@ -1,0 +1,25 @@
+{
+  "name": "vue-pinia-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vee-validate/rules": "^4.5.10",
+    "axios": "^0.26.1",
+    "bootstrap": "^5.1.3",
+    "pinia": "^2.0.13",
+    "vee-validate": "^4.5.10",
+    "vue": "^3.2.25",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vue-tsc": "^0.29.8"
+  }
+}
