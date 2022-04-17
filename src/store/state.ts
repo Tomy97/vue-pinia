@@ -31,15 +31,20 @@ export const useStore = defineStore(
       setPassword(state: State, password: string) {
         state.password = password
       },
+      setUsers(state: State, users: UsersI[]) {
+        state.users = users
+      },
       async addUsers(state: State, users: UsersI[]) {
         state.users = users
       },
-      async useDelete(id: number) {
+      async useDelete(users: UsersI[]) {
         try {
-          this.users.filter(i => i !== id);
+          if (this.users) this.users.filter(i => i !== users);
         } catch (err) {
           console.error(err)
         }
+      },
+      useEditUsers(users: UsersI[]) {
       }
     }
   })

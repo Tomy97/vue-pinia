@@ -40,7 +40,7 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" @click.prevent="useDelete(u.id)">
+              <button class="btn btn-danger" @click.prevent="useDelete(u)">
                 Delete
               </button>
             </td>
@@ -55,10 +55,12 @@
 import { getDataUsers } from '../composables/User.composable'
 import { UsersI } from '../interfaces/users.interfaces'
 import { useStore } from '../store/state'
-import router from '../routes'
+import { useRouter } from 'vue-router';
 
 const { useDelete } = useStore()
 const { users } = getDataUsers()
+const router = useRouter()
+
 const handelChange = (u: UsersI) => {
   router.push({
     name: 'Edit',
