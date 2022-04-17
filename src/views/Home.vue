@@ -1,19 +1,19 @@
 <template>
   <div class="row justify-content-center">
-    <div class="table-responsive p-5" id="no-more-tables" >
+    <div class="table-responsive p-5" id="no-more-tables">
       <table class="table table-dark table-hover table-striped">
         <thead>
-          <tr>
-            <th class="text-center">
+          <tr class="text-center">
+            <th>
               #
             </th>
-            <th class="text-center" colspan="2">
+            <th colspan="2">
               Name
             </th>
-            <th class="text-center">
+            <th>
               UserName
             </th>
-            <th class="text-center">
+            <th>
               Email
             </th>
             <th></th>
@@ -21,17 +21,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="u in users" :key="u.id">
-            <td data-title="#" class="text-center" scope="row">
+          <tr v-for="u in users" class="text-center" :key="u.id">
+            <td data-title="#" scope="row">
               {{ u.id }}
             </td>
-            <td data-title="Name" class="text-center" colspan="2">
+            <td data-title="Name" colspan="2">
               {{ u.name }}
             </td>
-            <td data-title="UserName" class="text-center">
+            <td data-title="UserName">
               {{ u.username }}
             </td>
-            <td data-title="Email" class="text-center">
+            <td data-title="Email">
               {{ u.email }}
             </td>
             <td>
@@ -40,7 +40,7 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" @click.prevent="handelDelete(u)">
+              <button class="btn btn-danger" @click.prevent="useDelete(u.id)">
                 Delete
               </button>
             </td>
@@ -54,18 +54,16 @@
 <script setup lang="ts">
 import { getDataUsers } from '../composables/User.composable'
 import { UsersI } from '../interfaces/users.interfaces'
+import { useStore } from '../store/state'
 import router from '../routes'
 
+const { useDelete } = useStore()
 const { users } = getDataUsers()
 const handelChange = (u: UsersI) => {
   router.push({
     name: 'Edit',
     params: { id: u.id, name: u.name, username: u.username, email: u.email },
   })
-}
-
-const handelDelete = (u: UsersI) => {
-  // Aca despachar la accion de eliminar
 }
 </script>
 <style>

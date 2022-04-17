@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
+import { UsersI } from './../interfaces/users.interfaces';
 
 interface State {
   name: string;
   lastName: string;
   email: string;
   password: string;
-  user: string;
+  users: UsersI[];
   isLoading: boolean;
 }
 
@@ -18,7 +19,7 @@ export const useStore = defineStore(
         lastName: '',
         email: '',
         password: '',
-        user: '',
+        users: [],
         isLoading: false,
       }
     },
@@ -30,8 +31,15 @@ export const useStore = defineStore(
       setPassword(state: State, password: string) {
         state.password = password
       },
-      async userLogin(state: State,) {
-
+      async addUsers(state: State, users: UsersI[]) {
+        state.users = users
+      },
+      async useDelete(id: number) {
+        try {
+          this.users.filter(i => i !== id);
+        } catch (err) {
+          console.error(err)
+        }
       }
     }
   })

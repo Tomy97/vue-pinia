@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <h6>
+      {{ props }}
+    </h6>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -18,4 +22,5 @@ const props = defineProps({
     default: true,
   },
 })
+
 </script>
