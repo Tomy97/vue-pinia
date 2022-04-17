@@ -40,7 +40,10 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" @click.prevent="useDelete(u)">
+              <button
+                class="btn btn-danger"
+                @click.prevent="store.useDelete(u)"
+              >
                 Delete
               </button>
             </td>
@@ -55,9 +58,10 @@
 import { getDataUsers } from '../composables/User.composable'
 import { UsersI } from '../interfaces/users.interfaces'
 import { useStore } from '../store/state'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
+import { ref } from 'vue-demi'
 
-const { useDelete } = useStore()
+const store = useStore()
 const { users } = getDataUsers()
 const router = useRouter()
 

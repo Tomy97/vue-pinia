@@ -2,7 +2,7 @@
   <div class="row justify-content-center p-5">
     <div class="col-12 d-flex justify-content-center">
       <div class="card width-card">
-        <div class="card-header">
+        <div class="card-title pt-3">
           <h5 class="text-center">
             {{ params.id ? 'Edit User' : 'Create User' }}
           </h5>
@@ -49,10 +49,21 @@ const userName = ref<string>('')
 const email = ref<string>('')
 const { handleSubmit } = useForm()
 const { useEditUsers } = useStore()
+
 const onSubmit = handleSubmit(async () => {
-  const url = { name: 'Home' }
-  if (email.value && name.value && userName.value) {
-    // useEditUsers( { email, name, userName } )
+  const data = {
+    name: name.value,
+    userName: userName.value,
+    email: email.value,
+  }
+
+  const url = {
+    name: 'Home',
+    paramas: {
+      data,
+    },
+  }
+  if (data.name && data.userName && data.email) {
     await router.push(url)
   } else {
     alert(' Ingrese los datos que quiere cambiar ')
